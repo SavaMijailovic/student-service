@@ -7,8 +7,10 @@
 
     ```sh
     git clone https://github.com/SavaMijailovic/student-service.git
-    cd student-service
 
+    ```
+    ```sh
+    cd student-service
     ```
 2. Install packages
 
@@ -20,6 +22,8 @@
 
     ```sh
     mongoimport --db Faculty --collection students --file data/students.json
+    ```
+    ```sh
     mongoimport --db Faculty --collection exams --file data/exams.json
     ```
 

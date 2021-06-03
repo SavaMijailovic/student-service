@@ -48,7 +48,7 @@
                     <tbody>
                         <% for (const exam of exams) { %>
                             <tr>
-                                <td><%= exam.subject.toUpperCase() %></td>
+                                <td><%= exam.subject %></td>
                                 <% 
                                 let d = exam.date.getDate();
                                 let m = exam.date.getMonth() + 1;
@@ -72,7 +72,7 @@
                     <input type="hidden" name="password" value="<%= student.password %>">
                     <div>
                         <label for="subject">Predmet</label>
-                        <input type="text" name="subject" id="subject" maxlength="50" autocomplete="off">
+                        <input type="text" name="subject" id="subject" maxlength="20" autocomplete="off">
                     </div>
 
                     <div>
@@ -101,7 +101,7 @@
                     <input type="hidden" name="password" value="<%= student.password %>">
                     <div>
                         <label for="subject-delete">Predmet</label>
-                        <input type="text" name="subject" id="subject-delete" maxlength="50"  autocomplete="off">
+                        <input type="text" name="subject" id="subject-delete" maxlength="20"  autocomplete="off">
                     </div>
                     <input type="submit" value="Obriši ispite" class="submit">
                 </form>

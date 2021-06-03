@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <title>Studentski sistem</title>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/css/nav.css">
+    <link type="text/css" rel="stylesheet" href="/css/form.css">
+    <link type="text/css" rel="stylesheet" href="/css/prijava.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/">POČETNA</a><a class="nav-tmp" href="/prijava">PRIJAVA</a>
+    </nav>
+
+    
+    <form method="POST" action="/student" class="prijava">
+        <div class="prijava">
+            <h2>Prijava</h2>
+            
+            <div>
+                <label>Korisničko ime</label>
+                <input type="text" name="username" id="username" autocomplete="on" maxlength="30" value="<%= username %>">
+                <div class="warning" id="user-exists">Već postoji korisnik sa unetim korisničkim imenom</div>
+            </div>
+
+            <div>
+                <label>Lozinka</label>
+                <input type="password" name="password" id="password" maxlength="30">
+                <% if (!passwordMatch) { %>
+                    <div class="warning" id="wrong-password">Pogrešno uneta lozinka</div>
+                    <script>
+                        document.getElementById('password').focus();
+                    </script>
+                <% } %>
+            </div>
+
+            <input type="submit" id="login" class="submit" value="Uloguj se na sistem">
+            <input type="button" value="Kreiraj nalog" id="signup" class="submit">
+        </div>
+    </form>
+
+    <script src="/js/prijava.js"></script>
+</body>
+
+</html>

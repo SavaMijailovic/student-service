@@ -1,0 +1,58 @@
+body {
+    min-width: 1300px;
+}
+
+main {
+    width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+main * {
+    text-align: left;
+}
+
+#exams, #forms {
+    display: inline-block;
+}
+
+#exams {
+    vertical-align: top;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+#forms {
+    position: relative;
+    left: 30px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border-top: 1px solid #a5a4a4;
+    border-bottom: 1px solid #a5a4a4;
+    padding: 12px 0px 12px 10px;
+    width: 150px;
+    text-align: left;
+}
+
+.date {
+    width: 250px;
+}
+
+.grade {
+    width: 100px;
+}
+
+.submit {
+    margin-top: 0px;
+}
+
+.top-space {
+    margin-top: 70px;
+}

@@ -1,0 +1,42 @@
+body {
+    margin: 0px;
+    min-width: 632px;
+}
+
+form.prijava {
+    text-align: center;
+    margin-top: 50px;
+}
+
+div.prijava {
+    display: inline-block;
+}
+
+input[type="password"], input[name="username"] {
+    margin-bottom: 0px;
+}
+
+label {
+    margin-top: 20px;
+}
+
+#signup {
+    margin-left: 25px;
+}
+
+#login {
+    margin-right: 25px;
+}
+
+.warning {
+    position: absolute;
+    margin-top: 0px;
+    width: 500px;
+    text-align: center;
+    color: red;
+    font-size: 15px;
+}
+
+#user-exists {
+    display: none;
+}

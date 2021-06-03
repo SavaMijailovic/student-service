@@ -1,0 +1,52 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0px;
+    margin-bottom: 50px;
+}
+
+nav {
+    background-color: rgb(153, 50, 204);
+    font-size: 0px; /* to remove spaces */
+}
+
+nav a:any-link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: rgb(113, 16, 161);
+}
+
+.nav-tmp {
+    background-color: rgb(113, 16, 161) !important;
+}
+
+.nav-submit {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: rgb(153, 50, 204);
+    border-style: none;
+    cursor: pointer;
+}
+
+.nav-submit:hover {
+    background-color: rgb(113, 16, 161);
+}
+
+.nav-form {
+    display: inline;
+}

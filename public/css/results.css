@@ -1,0 +1,25 @@
+body {
+    min-width: 1300px;
+}
+
+main {
+    width: 1200px;
+    margin: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    width: 200px;
+    border-top: 1px solid #a5a4a4;
+    border-bottom: 1px solid #a5a4a4;
+    padding: 12px 0px 12px 10px;
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+}

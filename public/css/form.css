@@ -1,0 +1,39 @@
+label {
+    display: block;
+    font-weight: bolder;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+input, select, option {
+    font-size: 16px;
+}
+
+input[type="text"], input[type="password"], select, input[type="date"] {
+    outline-style: none;
+    display: inline-block;
+    border-radius: 5px;
+    width: 450px;
+    border: 1px solid #a5a4a4;
+    padding: 10px 15px 10px 15px;
+    margin: 0px 0px 20px 0px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus, input[type="date"]:focus {
+    border-color: rgb(153, 50, 204);
+}
+
+.submit {
+    margin-top: 40px;
+    display: inline-block;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.submit:hover {
+    background-color: #035bb9;
+}

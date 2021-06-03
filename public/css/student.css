@@ -1,0 +1,80 @@
+body {
+    margin: 0px;
+    text-align: center;
+    min-width: 1100px;
+    margin-bottom: 50px;
+}
+
+body * {
+    text-align: left;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+main {
+    display: inline-block;
+}
+
+#info {
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table {
+    width: 100%;
+}
+
+td {
+    width: 70%;
+    border-top: 1px solid #a5a4a4;
+    border-bottom: 1px solid #a5a4a4;
+    padding: 12px 0px 12px 10px;
+}
+
+td:first-child {
+    width: 30%;
+}
+
+select {
+    width: 482px;
+    background-color: white;
+}
+
+input[name="username"]:read-only {
+    background-color: #f0efef;
+}
+
+#forms {
+    display: inline-block;
+    text-align: center;
+    margin-top: 40px;
+}
+
+#izmena-podataka label, #brisanje-podataka label {
+    font-weight: normal;
+}
+
+form {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+#izmena-podataka {
+    margin-right: 20px;
+}
+
+#brisanje-podataka {
+    margin-left: 20px;
+}

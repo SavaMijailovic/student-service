@@ -1,3 +1,3 @@
-### Student service
+# Student service
 
-# Faculty project
+### Faculty project

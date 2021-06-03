@@ -30,4 +30,4 @@
 
     ```
 
-5. In your browser type next url [http://localhost:8168](http://localhost:8168)
+5. In your browser type next url <a href="http://localhost:8168" target="_blank">http://localhost:8168</a>

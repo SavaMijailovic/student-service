@@ -16,7 +16,14 @@
     npm install
 
     ```
-3. Start app
+3. Import data into database
+
+    ```sh
+    mongoimport --db Faculty --collection students --file data/students.json
+    mongoimport --db Faculty --collection exams --file data/exams.json
+    ```
+
+4. Start app
 
     ```sh
     node server.js

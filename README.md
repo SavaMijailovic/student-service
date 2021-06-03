@@ -1,5 +1,10 @@
 # Student service - faculty project
 
+WEB application that manages data about students and their exams. I made it as a result of practicing for a college course.
+
+App uses _express_ and _mongoose_ external packages.
+Code is implemented using Model-View-Controller (MVC) architectural pattern and CommonJS formatting system.
+
 ## :package: Installation
 :exclamation: Requirements: Node.js (npm), MongoDB (server must be runned)
 

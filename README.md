@@ -34,4 +34,4 @@
 
     ```
 
-5. In your browser type next url [http://localhost:8168](http://localhost:8168)
+5. In your browser type next url: [http://localhost:8168](http://localhost:8168)

@@ -40,29 +40,31 @@ async function getAllExams() {
 }
 
 async function addExam(data) {
-    const studentId = await studentModel.getStudentId(data.username);
+    const student = await studentModel.getStudentByUsername(data.username);
     let exam = null;
-    if (studentId != null) {
+    if (student != null) {
         exam = new ExamModel({
             _id: new mongoose.Types.ObjectId(),
-            student: studentId,
+            student: student._id,
             subject: data.subject,
             grade: data.grade,
             date: new Date(data.date)
         });
         await exam.save();
+        await studentModel.updateAvgGrade(student);
     }
     return exam;
 }
 
 async function deleteExams(username, subject) {
-    const studentId = await studentModel.getStudentId(username);
-    if (studentId != null) {
+    const student = await studentModel.getStudentByUsername(username);
+    if (student != null) {
         await ExamModel.deleteMany({$and: [
-            {student: studentId},
+            {student: student._id},
             {subject: subject}
             ]
         }).exec();
+        await studentModel.updateAvgGrade(student);
     }
 }
 

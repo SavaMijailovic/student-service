@@ -2,7 +2,8 @@
 <html lang="sr">
 
 <head>
-    <title>Dobrodošli, <%= student.username %></title>
+    <title>Dobrodošli, <%= student.username %>
+    </title>
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="/css/nav.css">
     <link type="text/css" rel="stylesheet" href="/css/form.css">
@@ -12,19 +13,19 @@
 <body>
     <nav>
         <a href="/prijava">IZLOGUJ SE IZ SISTEMA</a>
-        
+
         <form method="POST" action="/student" class="nav-form">
             <input type="hidden" name="username" value="<%= student.username %>">
             <input type="hidden" name="password" value="<%= student.password %>">
             <input type="submit" value="PROFIL" class="nav-submit nav-tmp">
         </form>
-        
+
         <form method="POST" action="/exams" class="nav-form">
             <input type="hidden" name="username" value="<%= student.username %>">
             <input type="hidden" name="password" value="<%= student.password %>">
             <input type="submit" value="ISPITI" class="nav-submit">
         </form>
-        
+
         <form method="POST" action="/results" class="nav-form">
             <input type="hidden" name="username" value="<%= student.username %>">
             <input type="hidden" name="password" value="<%= student.password %>">
@@ -33,7 +34,8 @@
     </nav>
 
     <main>
-        <h1>Studentska stranica za studenta <%= student.username %></h1>
+        <h1>Studentska stranica za studenta <%= student.username %>
+        </h1>
 
         <div id="table">
             <h2 id="info">Informacije:</h2>
@@ -41,18 +43,40 @@
             <table>
                 <tbody>
                     <tr>
-                        <td>Username</td>
-                        <td><%= student.username %></td>
+                        <td>Korisničko ime</td>
+                        <td>
+                            <%= student.username %>
+                        </td>
                     </tr>
+
                     <tr>
-                        <td>Password</td>
-                        <% 
-                        const password = []; 
-                        for (const c of student.password) { 
-                            password.push('*'); 
-                        } 
-                        %>
-                        <td><%= password.join('') %></td>
+                        <td>Ime</td>
+                        <td>
+                            <%= student.name %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Prezime</td>
+                        <td>
+                            <%= student.surname %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Smer</td>
+                        <td>
+                            <%= student.major %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Prosek</td>
+                        <td>
+                            <% if (student.avg_grade !=0) { %>
+                                <%= student.avg_grade.toFixed(2) %>
+                            <% } %>
+                        </td>
                     </tr>
                 </tbody>
             </table>

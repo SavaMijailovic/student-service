@@ -13,10 +13,6 @@ const studentSchema = new mongoose.Schema({
     name: String,
     surname: String,
     major: String,
-    grades: {
-        type: [Number],
-        dafault: []
-    },
     avg_grade: {
         type: Number,
         default: 0
@@ -30,10 +26,27 @@ const studentSchema = new mongoose.Schema({
 
 const StudentModel = mongoose.model('Student', studentSchema);
 
+async function avgGrade(student) {
+    const examModel = require('./exam');
+    const exams = await examModel.getExamsForStudent(student.username);
+    if (exams.length > 0) {
+        let n = 0;
+        let avg = 0;
+        for (const exam of exams) {
+            avg += exam.grade;
+            n++;
+        }
+        avg /= n;
+        student.avg_grade = avg;
+        await StudentModel.updateOne({username: student.username}, {$set: {avg_grade: avg}}).exec();
+    }
+    return student;
+}
+
 async function getStudentByUsername(username) {
     const students = await StudentModel.find({username: username}).exec();
     if (students.length > 0) {
-        return students[0];
+        return await avgGrade(students[0]);
     }
     return null;
 }

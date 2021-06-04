@@ -13,7 +13,10 @@ const examSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    grade: Number
+    grade: {
+        type: Number,
+        default: 5
+    }
 }, {collection: 'exams'});
 
 const ExamModel = mongoose.model('Exam', examSchema);
@@ -40,12 +43,13 @@ async function addExam(data) {
     const studentId = await studentModel.getStudentId(data.username);
     let exam = null;
     if (studentId != null) {
-        exam = new ExamModel();
-        exam._id = new mongoose.Types.ObjectId();
-        exam.student = studentId;
-        exam.subject = data.subject;
-        exam.grade = Number.parseInt(data.grade);
-        exam.date = new Date(data.date);
+        exam = new ExamModel({
+            _id: new mongoose.Types.ObjectId(),
+            student: studentId,
+            subject: data.subject,
+            grade: data.grade,
+            date: new Date(data.date)
+        });
         await exam.save();
     }
     return exam;

@@ -29,17 +29,17 @@ const StudentModel = mongoose.model('Student', studentSchema);
 async function updateAvgGrade(student) {
     const examModel = require('./exam');
     const exams = await examModel.getExamsForStudent(student.username);
+    let avg = 0;
     if (exams.length > 0) {
         let n = 0;
-        let avg = 0;
         for (const exam of exams) {
             avg += exam.grade;
             n++;
         }
         avg /= n;
-        student.avg_grade = avg;
-        await StudentModel.updateOne({ username: student.username }, { $set: { avg_grade: avg } }).exec();
     }
+    student.avg_grade = avg;
+    await StudentModel.updateOne({ username: student.username }, { $set: { avg_grade: avg } }).exec();
     return student;
 }
 
@@ -100,6 +100,7 @@ async function calculateAvgGrades() {
     for (const student of students) {
         updateAvgGrade(student);
     }
+    console.log('done');
 }
 
 module.exports = {

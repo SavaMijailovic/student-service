@@ -19,10 +19,10 @@ const studentSchema = new mongoose.Schema({
     },
     note: {
         type: String,
-        required: true, 
+        required: true,
         default: ' '
     }
-}, {collection: 'students'});
+}, { collection: 'students' });
 
 const StudentModel = mongoose.model('Student', studentSchema);
 
@@ -38,13 +38,13 @@ async function updateAvgGrade(student) {
         }
         avg /= n;
         student.avg_grade = avg;
-        await StudentModel.updateOne({username: student.username}, {$set: {avg_grade: avg}}).exec();
+        await StudentModel.updateOne({ username: student.username }, { $set: { avg_grade: avg } }).exec();
     }
     return student;
 }
 
 async function getStudentByUsername(username) {
-    const students = await StudentModel.find({username: username}).exec();
+    const students = await StudentModel.find({ username: username }).exec();
     if (students.length > 0) {
         const student = students[0];
         if (student.avg_grade === 0) {
@@ -80,11 +80,11 @@ async function updateStudentData(data) {
         surname: data.surname,
         major: data.major
     };
-    await StudentModel.updateOne({username: data.username}, {$set: dataToUpdate}).exec();
+    await StudentModel.updateOne({ username: data.username }, { $set: dataToUpdate }).exec();
 }
 
 async function deleteStudent(username) {
-    await StudentModel.deleteOne({username: username}).exec();
+    await StudentModel.deleteOne({ username: username }).exec();
 }
 
 async function addStudent(username, password) {
@@ -93,6 +93,13 @@ async function addStudent(username, password) {
     student.username = username;
     student.password = password;
     return await student.save();
+}
+
+async function calculateAvgGrades() {
+    const students = await StudentModel.find().exec();
+    for (const student of students) {
+        updateAvgGrade(student);
+    }
 }
 
 module.exports = {

@@ -50,7 +50,7 @@ async function addExam(data) {
             grade: data.grade,
             date: new Date(data.date)
         });
-        await exam.save();
+        exam = await exam.save();
         await studentModel.updateAvgGrade(student);
     }
     return exam;

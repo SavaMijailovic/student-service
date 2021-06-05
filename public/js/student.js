@@ -4,13 +4,16 @@ if (form != null) {
 }
 
 function check_input(event) {
-    const inputs = document.querySelectorAll('#username, #password');
+    const inputs = document.querySelectorAll('#name, #surname, #password');
     for (const input of inputs) {
-        if (input.value.length < 4) {
-            event.preventDefault();
-            window.alert(`${input.parentElement.firstElementChild.textContent}mora sadrzati barem 6 karaktera`);
-            input.focus();
-            return false;
-        }
+        input.value = input.value.trim();
+    }
+
+    const password = document.getElementById('password');
+    if (password == null || password.value.length < 4) {
+        event.preventDefault();
+        window.alert(`${password.parentElement.firstElementChild.textContent} mora sadrzati barem 6 karaktera`);
+        password.focus();
+        return false;
     }
 }

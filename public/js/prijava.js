@@ -9,6 +9,7 @@ function check_input(event) {
     warning.style.display = 'none';
     const inputs = document.querySelectorAll('#username, #password');
     for (const input of inputs) {
+        input.value = input.value.trim();
         if (input.value.length < 4) {
             event.preventDefault();
             window.alert(`${input.parentElement.firstElementChild.textContent} mora sadržati barem 4 karaktera`);

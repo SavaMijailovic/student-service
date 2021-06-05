@@ -24,7 +24,8 @@ if (deleteForm != null) {
 function checkSubject(event) {
     const subject = document.querySelector(`#${this.id} div input[name="subject"]`);
     if (subject == null) return;
-
+    
+    subject.value = subject.value.trim()
     if (subject.value.length < 2) {
         event.preventDefault();
         window.alert('Naziv predmeta ne sme biti kraci od 2 karaktera');
@@ -37,6 +38,7 @@ function checkInputs(event) {
     const subject = document.querySelector(`#${this.id} div input[name="subject"]`);
     if (subject == null) return;
 
+    subject.value = subject.value.trim();
     if (subject.value.length < 2) {
         event.preventDefault();
         window.alert('Naziv predmeta ne sme biti kraci od 2 karaktera');
@@ -47,6 +49,7 @@ function checkInputs(event) {
     const grade = document.getElementById('grade');
     if (grade == null) return;
 
+    grade.value = grade.value.trim();
     const gr = Number.parseInt(grade.value);
     if (Number.isNaN(gr) || gr < 5 || gr > 10) {
         event.preventDefault();

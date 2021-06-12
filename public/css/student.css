@@ -35,9 +35,13 @@ table {
     width: 100%;
 }
 
+tr:first-child td {
+    border-top: 1px solid #a5a4a4;
+    border-bottom: 0.9px solid #a5a4a4;
+}
+
 td {
     width: 70%;
-    border-top: 1px solid #a5a4a4;
     border-bottom: 1px solid #a5a4a4;
     padding: 12px 0px 12px 10px;
 }
@@ -51,8 +55,12 @@ select {
     background-color: white;
 }
 
+option {
+    color: #12232E !important;
+}
+
 input[name="username"]:read-only {
-    background-color: #f0efef;
+    background-color: #e0d7d7;
 }
 
 #forms {

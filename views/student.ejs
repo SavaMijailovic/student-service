@@ -1,164 +1,191 @@
 <!DOCTYPE html>
 <html lang="sr">
+  <head>
+    <title>Dobrodošli, <%= student.username %></title>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/nav.css" />
+    <link type="text/css" rel="stylesheet" href="/css/form.css" />
+    <link type="text/css" rel="stylesheet" href="/css/student.css" />
+  </head>
 
-<head>
-    <title>Dobrodošli, <%= student.username %>
-    </title>
-    <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="/css/nav.css">
-    <link type="text/css" rel="stylesheet" href="/css/form.css">
-    <link type="text/css" rel="stylesheet" href="/css/student.css">
-</head>
-
-<body>
+  <body>
     <nav>
-        <a href="/prijava">IZLOGUJ SE IZ SISTEMA</a>
+      <a href="/prijava">IZLOGUJ SE IZ SISTEMA</a>
 
-        <form method="POST" action="/student" class="nav-form">
-            <input type="hidden" name="username" value="<%= student.username %>">
-            <input type="hidden" name="password" value="<%= student.password %>">
-            <input type="submit" value="PROFIL" class="nav-submit nav-tmp">
-        </form>
+      <form method="POST" action="/student" class="nav-form">
+        <input type="hidden" name="username" value="<%= student.username %>" />
+        <input type="hidden" name="password" value="<%= student.password %>" />
+        <input type="submit" value="PROFIL" class="nav-submit nav-tmp" />
+      </form>
 
-        <form method="POST" action="/exams" class="nav-form">
-            <input type="hidden" name="username" value="<%= student.username %>">
-            <input type="hidden" name="password" value="<%= student.password %>">
-            <input type="submit" value="ISPITI" class="nav-submit">
-        </form>
+      <form method="POST" action="/exams" class="nav-form">
+        <input type="hidden" name="username" value="<%= student.username %>" />
+        <input type="hidden" name="password" value="<%= student.password %>" />
+        <input type="submit" value="ISPITI" class="nav-submit" />
+      </form>
 
-        <form method="POST" action="/results" class="nav-form">
-            <input type="hidden" name="username" value="<%= student.username %>">
-            <input type="hidden" name="password" value="<%= student.password %>">
-            <input type="submit" value="REZULTATI" class="nav-submit">
-        </form>
+      <form method="POST" action="/results" class="nav-form">
+        <input type="hidden" name="username" value="<%= student.username %>" />
+        <input type="hidden" name="password" value="<%= student.password %>" />
+        <input type="submit" value="REZULTATI" class="nav-submit" />
+      </form>
     </nav>
 
     <main>
-        <h1>Studentska stranica za studenta <%= student.username %>
-        </h1>
+      <h1>Studentska stranica za studenta <%= student.username %></h1>
 
-        <div id="table">
-            <h2 id="info">Informacije:</h2>
+      <div id="table">
+        <h2 id="info">Informacije:</h2>
 
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Korisničko ime</td>
-                        <td>
-                            <%= student.username %>
-                        </td>
-                    </tr>
+        <table>
+          <tbody>
+            <tr>
+              <td>Korisničko ime</td>
+              <td><%= student.username %></td>
+            </tr>
 
-                    <tr>
-                        <td>Ime</td>
-                        <td>
-                            <%= student.name %>
-                        </td>
-                    </tr>
+            <tr>
+              <td>Ime</td>
+              <td><%= student.name %></td>
+            </tr>
 
-                    <tr>
-                        <td>Prezime</td>
-                        <td>
-                            <%= student.surname %>
-                        </td>
-                    </tr>
+            <tr>
+              <td>Prezime</td>
+              <td><%= student.surname %></td>
+            </tr>
 
-                    <tr>
-                        <td>Smer</td>
-                        <td>
-                            <%= student.major %>
-                        </td>
-                    </tr>
+            <tr>
+              <td>Smer</td>
+              <td><%= student.major %></td>
+            </tr>
 
-                    <tr>
-                        <td>Prosek</td>
-                        <td>
-                            <% if (student.avg_grade != 0) { %>
-                                <%= student.avg_grade.toFixed(2) %>
-                            <% } %>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <tr>
+              <td>Prosek</td>
+              <td>
+                <% if (student.avg_grade !=0) { %> <%=
+                student.avg_grade.toFixed(2) %> <% } %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <div id="forms">
-            <form id="izmena-podataka" method="POST" action="/student/update">
-                <h2>Izmena podataka</h2>
+      <div id="forms">
+        <form id="izmena-podataka" method="POST" action="/student/update">
+          <h2>Izmena podataka</h2>
 
-                <div>
-                    <label for="username">Korisničko ime</label>
-                    <input type="text" name="username" id="username" value="<%= student.username %>" maxlength="30"
-                        readonly>
-                </div>
+          <div>
+            <label for="username">Korisničko ime</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value="<%= student.username %>"
+              maxlength="30"
+              readonly
+            />
+          </div>
 
-                <div>
-                    <label for="password">Lozinka <input type="checkbox" id="see_password"></label>
-                    <input type="password" name="password" id="password" value="<%= student.password %>" maxlength="30">
-                    <script>
-                        const checkbox = document.getElementById('see_password');
-                        const password = document.getElementById('password');
-                        checkbox.addEventListener('change', function () {
-                            if (checkbox.checked) {
-                                password.type = 'text';
-                            } else {
-                                password.type = 'password';
-                            }
-                        });
-                    </script>
-                </div>
+          <div>
+            <label for="password"
+              >Lozinka <input type="checkbox" id="see_password"
+            /></label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value="<%= student.password %>"
+              maxlength="30"
+            />
+            <script>
+              const checkbox = document.getElementById("see_password");
+              const password = document.getElementById("password");
+              checkbox.addEventListener("change", function () {
+                if (checkbox.checked) {
+                  password.type = "text";
+                } else {
+                  password.type = "password";
+                }
+              });
+            </script>
+          </div>
 
-                <div>
-                    <label for="name">Ime</label>
-                    <input type="text" name="name" id="name" value="<%= student.name %>" maxLength="50">
-                </div>
+          <div>
+            <label for="name">Ime</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value="<%= student.name %>"
+              maxLength="50"
+            />
+          </div>
 
-                <div>
-                    <label for="surname">Prezime</label>
-                    <input type="text" name="surname" id="surname" value="<%= student.surname %>" maxLength="50">
-                </div>
+          <div>
+            <label for="surname">Prezime</label>
+            <input
+              type="text"
+              name="surname"
+              id="surname"
+              value="<%= student.surname %>"
+              maxLength="50"
+            />
+          </div>
 
-                <div>
-                    <label for="major">Smer</label>
-                    <select name="major" id="major">
-                        <option value="" selected></option>
-                        <option value="Informatika">Informatika</option>
-                        <option value="Racunarstvo i informatika">Racunarstvo i informatika</option>
-                        <option value="Statistika">Statistika</option>
-                        <option value="Profesor">Profesor</option>
-                        <option value="Primenjena matematika">Primenjena matematika</option>
-                        <option value="Teorijska matematika">Teorijska matematika</option>
-                    </select>
+          <div>
+            <label for="major">Smer</label>
+            <select name="major" id="major">
+              <option value="" selected></option>
+              <option value="Informatika">Informatika</option>
+              <option value="Racunarstvo i informatika">
+                Racunarstvo i informatika
+              </option>
+              <option value="Statistika">Statistika</option>
+              <option value="Profesor">Profesor</option>
+              <option value="Primenjena matematika">
+                Primenjena matematika
+              </option>
+              <option value="Teorijska matematika">Teorijska matematika</option>
+            </select>
 
-                    <script>
-                        const major = '<%= student.major %>';
-                        const select = document.getElementById('major');
-                        if (select != null) {
-                            for (const option of select.options) {
-                                if (option.value == major) {
-                                    option.selected = true;
-                                    break;
-                                }
-                            }
-                        }
-                    </script>
-                </div>
+            <script>
+              const major = "<%= student.major %>";
+              const select = document.getElementById("major");
+              if (select != null) {
+                for (const option of select.options) {
+                  if (option.value == major) {
+                    option.selected = true;
+                    break;
+                  }
+                }
+              }
+            </script>
+          </div>
 
-                <input type="submit" value="Izmeni podatke" class="submit">
-            </form>
+          <input type="submit" value="Izmeni podatke" class="submit" />
+        </form>
 
-            <form id="brisanje-podataka" method="POST" action="/student/delete/<%= student.username %>">
-                <h2>Brisanje podataka</h2>
-                <div>
-                    <label for="username-delete">Korisničko ime</label>
-                    <input type="text" name="username" id="username-delete" value="<%= student.username %>" readonly>
-                </div>
+        <form
+          id="brisanje-podataka"
+          method="POST"
+          action="/student/delete/<%= student.username %>"
+        >
+          <h2>Brisanje podataka</h2>
+          <div>
+            <label for="username-delete">Korisničko ime</label>
+            <input
+              type="text"
+              name="username"
+              id="username-delete"
+              value="<%= student.username %>"
+              readonly
+            />
+          </div>
 
-                <input type="submit" class="submit" value="Obriši podatke">
-            </form>
-        </div>
+          <input type="submit" class="submit" value="Obriši podatke" />
+        </form>
+      </div>
     </main>
     <script src="/js/student.js"></script>
-</body>
-
+  </body>
 </html>

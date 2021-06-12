@@ -1,10 +1,12 @@
 * {
     font-family: sans-serif;
+    color: white;
 }
 
 body {
     margin: 0px;
     margin-bottom: 50px;
+    background-color: #12232E;
 }
 
 nav {
@@ -22,14 +24,6 @@ nav a:any-link {
     text-align: center;
 }
 
-nav a:hover {
-    background-color: rgb(113, 16, 161);
-}
-
-.nav-tmp {
-    background-color: rgb(113, 16, 161) !important;
-}
-
 .nav-submit {
     display: inline-block;
     text-decoration: none;
@@ -43,10 +37,15 @@ nav a:hover {
     cursor: pointer;
 }
 
-.nav-submit:hover {
-    background-color: rgb(113, 16, 161);
-}
-
 .nav-form {
     display: inline;
+}
+
+nav, .nav-submit {
+    /* background-color: #007CC7; */
+    background-color: #3f6074;
+}
+
+nav a:hover, .nav-tmp, .nav-submit:hover {
+    background-color: #007bff;
 }

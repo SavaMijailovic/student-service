@@ -1,72 +1,66 @@
 <!DOCTYPE html>
 <html lang="sr">
-
-<head>
+  <head>
     <title>Rezultati</title>
-    <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="/css/nav.css">
-    <link type="text/css" rel="stylesheet" href="/css/results.css">
-</head>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/nav.css" />
+    <link type="text/css" rel="stylesheet" href="/css/results.css" />
+  </head>
 
-<body>
+  <body>
     <nav>
-        <a href="/prijava">IZLOGUJ SE IZ SISTEMA</a>
-        
-        <form method="POST" action="/student" class="nav-form">
-            <input type="hidden" name="username" value="<%= student.username %>">
-            <input type="hidden" name="password" value="<%= student.password %>">
-            <input type="submit" value="PROFIL" class="nav-submit">
-        </form>
-        
-        <form method="POST" action="/exams" class="nav-form">
-            <input type="hidden" name="username" value="<%= student.username %>">
-            <input type="hidden" name="password" value="<%= student.password %>">
-            <input type="submit" value="ISPITI" class="nav-submit">
-        </form>
-        
-        <form method="POST" action="/results" class="nav-form">
-            <input type="hidden" name="username" value="<%= student.username %>">
-            <input type="hidden" name="password" value="<%= student.password %>">
-            <input type="submit" value="REZULTATI" class="nav-submit nav-tmp">
-        </form>
-    </nav>
-</body>
+      <a href="/prijava">IZLOGUJ SE IZ SISTEMA</a>
 
-<main>
+      <form method="POST" action="/student" class="nav-form">
+        <input type="hidden" name="username" value="<%= student.username %>" />
+        <input type="hidden" name="password" value="<%= student.password %>" />
+        <input type="submit" value="PROFIL" class="nav-submit" />
+      </form>
+
+      <form method="POST" action="/exams" class="nav-form">
+        <input type="hidden" name="username" value="<%= student.username %>" />
+        <input type="hidden" name="password" value="<%= student.password %>" />
+        <input type="submit" value="ISPITI" class="nav-submit" />
+      </form>
+
+      <form method="POST" action="/results" class="nav-form">
+        <input type="hidden" name="username" value="<%= student.username %>" />
+        <input type="hidden" name="password" value="<%= student.password %>" />
+        <input type="submit" value="REZULTATI" class="nav-submit nav-tmp" />
+      </form>
+    </nav>
+  </body>
+
+  <main>
     <h1>Rezultati ispita</h1>
     <table>
-        <thead>
-            <tr>
-                <th>Predmet</th>
-                <th>Indeks</th>
-                <th>Ime</th>
-                <th>Prezime</th>
-                <th>Datum polaganja</th>
-                <th>Ocena</th>
-            </tr>
-        </thead>
+      <thead>
+        <tr>
+          <th>Predmet</th>
+          <th>Indeks</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Datum polaganja</th>
+          <th>Ocena</th>
+        </tr>
+      </thead>
 
-        <tbody>
-            <%for (const exam of exams) { %>
-                <tr>
-                    <td><%= exam.subject %></td>
-                    <td><%= exam.student.username %></td>
-                    <td><%= exam.student.name %></td>
-                    <td><%= exam.student.surname %></td>
-                    <% 
-                        let d = exam.date.getDate();
-                        let m = exam.date.getMonth() + 1;
-                        const y = exam.date.getFullYear();
-                        d = (d < 10 ? '0' : '') + d;
-                        m = (m < 10 ? '0' : '') + m;
-                        const dateString = d + '.' + m + '.' + y + '.';
-                    %>
-                    <td><%= dateString %></td>
-                    <td><%= exam.grade %></td>
-                </tr>
-            <% } %>
-        </tbody>
+      <tbody>
+        <%for (const exam of exams) { %>
+        <tr>
+          <td><%= exam.subject %></td>
+          <td><%= exam.student.username %></td>
+          <td><%= exam.student.name %></td>
+          <td><%= exam.student.surname %></td>
+          <% let d = exam.date.getDate(); let m = exam.date.getMonth() + 1;
+          const y = exam.date.getFullYear(); d = (d < 10 ? '0' : '') + d; m = (m
+          < 10 ? '0' : '') + m; const dateString = d + '.' + m + '.' + y + '.';
+          %>
+          <td><%= dateString %></td>
+          <td><%= exam.grade %></td>
+        </tr>
+        <% } %>
+      </tbody>
     </table>
-</main>
-
+  </main>
 </html>

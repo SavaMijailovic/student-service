@@ -17,12 +17,12 @@ const examSchema = new mongoose.Schema({
         type: Number,
         default: 5
     }
-}, {collection: 'exams'});
+}, { collection: 'exams' });
 
 const ExamModel = mongoose.model('Exam', examSchema);
 
 async function getExamsForStudent(username) {
-    const allExams = await ExamModel.find().populate('student').sort({date: 1}).exec();
+    const allExams = await ExamModel.find().populate('student').sort({ date: 1 }).exec();
     const exams = [];
     for (const exam of allExams) {
         if (exam.student.username === username) {
@@ -59,9 +59,10 @@ async function addExam(data) {
 async function deleteExams(username, subject) {
     const student = await studentModel.getStudentByUsername(username);
     if (student != null) {
-        await ExamModel.deleteMany({$and: [
-            {student: student._id},
-            {subject: subject}
+        await ExamModel.deleteMany({
+            $and: [
+                { student: student._id },
+                { subject: subject }
             ]
         }).exec();
         await studentModel.updateAvgGrade(student);
@@ -72,8 +73,8 @@ async function updateExamsDate(username) {
     const studentId = await studentModel.getStudentId(username);
     if (studentId != null) {
         await ExamModel.updateMany(
-            {student: studentId},
-            {$currentDate: {date: true}}
+            { student: studentId },
+            { $currentDate: { date: true } }
         ).exec();
     }
 }
